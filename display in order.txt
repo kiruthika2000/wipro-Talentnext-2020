@@ -1,0 +1,14 @@
+3.display in order
+public class Result
+{
+    public static void main (String[] args)
+    {
+        char firstletter='a';
+        char secondletter='b';
+        if (firstletter>secondletter)
+            System.out.println(secondletter+" , "+firstletter);
+       
+        else
+            System.out.println(firstletter+" , "+secondletter);
+    }
+}
