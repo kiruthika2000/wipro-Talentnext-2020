@@ -1,0 +1,41 @@
+public class Result {
+
+    public int Difference(int [] i, int start, int end){
+        if(start>=end){
+            return -1;
+        }
+        int mid = start +  (end-start)/2;
+        int leftDiff = Difference(i,start,mid);
+        int rightDiff =Difference(i,mid+1,end);
+        int minLeft = getMin(i, start, mid);
+        int maxRight = getMax(i, mid, end);
+        int centerDiff = maxRight - minLeft;
+        return Math.max(centerDiff, Math.max(leftDiff,rightDiff));
+    }
+
+    public int getMin(int [] A, int i, int j){
+        int min = A[i];
+        for (int k = i+1; k <=j ; k++) {
+            if(A[k]<min)
+                min = A[k];
+        }
+        return min;
+    }
+    public int getMax(int [] A, int i, int j){
+        int max = A[i];
+        for (int k = i+1; k <=j ; k++) {
+            if(A[k]>max)
+                max = A[k];
+        }
+        return max;
+    }
+
+    public static void main(String[] args) {
+        Difference m = new Difference();
+        int [] A = {7,2,3,10,2,4,8,1};
+        int start = 0;
+        int end = A.length-1;
+        System.out.println(
+                m.Difference(A, start, end));
+    }
+}
