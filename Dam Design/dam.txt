@@ -1,0 +1,43 @@
+import java.util.Scanner;
+
+
+public class Dam{
+
+    public static int Height(int[] Positions,int[] wallsHeight){
+        int max=0;
+        for(int i=0;i<Positions.length-1;i++){
+           
+            int space = Positions[i+1]-Positions[i];
+            if(space>1){
+                max=wallsHeight[i];
+                for(int j=1;j<space;j++){
+                    if(j==1){
+                        max++;
+                    }else if(max<wallsHeight[i+1]){
+                        max++;
+                    }
+                }
+            }
+        }        
+        return max;    
+    }
+    public static void main(String[] args) {
+            
+        Scanner input = new Scanner(System.in);
+        //The position of the sticks are got as input
+        int sticksCount=input.nextInt();
+        int[] Positions=new int[sticksCount];
+        for(int i=0;i<sticksCount;i++){
+            Positions[i]=input.nextInt();
+        }
+        //The height of the sticks are got as input
+        int heightsCount=input.nextInt();
+        int[] wallsheight=new int[sticksCount];
+        for(int i=0;i<heightsCount;i++){
+            wallsheight[i]=input.nextInt()+1;
+        }
+        System.out.println(Height(Positions,wallsheight));
+    }
+
+}
+======================================================================
